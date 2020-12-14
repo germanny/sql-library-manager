@@ -29,6 +29,10 @@ form a.button, input[type=submit] {
   transition: 0.4s;
 }
 
+.btn-search {
+  margin-left: 15px !important;
+}
+
 input[type=submit] {
   border: 0;
 }

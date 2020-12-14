@@ -40,7 +40,6 @@ function asyncHandler(cb) {
 /* GET - Show full books listing. */
 router.get('/', asyncHandler(async (req, res) => {
   const search = req.body.search ? req.body.search : '';
-  console.log('get search term: ', search);
   const books = await Book.findAll({ order: [['title', 'ASC']] });
   res.render('books/index', { books, title: 'My Books List', search });
 }));
@@ -52,7 +51,6 @@ router.post('/', asyncHandler(async (req, res) => {
 
   // https://sequelize.org/master/manual/model-querying-basics.html#applying-where-clauses
   if (search) {
-    console.log('post search term: ', search);
     const books = await Book.findAll({
       order: [['title', 'ASC']],
       where: {
@@ -74,7 +72,6 @@ router.post('/', asyncHandler(async (req, res) => {
     });
     res.render('books/index', { books, title: 'Search Results', search });
   } else {
-    console.log('no search term');
     try {
       book = await Book.create(req.body);
       res.redirect('/books');
@@ -128,7 +125,6 @@ router.post('/:id/edit', asyncHandler(async (req, res) => {
     book = await Book.findByPk(req.params.id);
     if (book) {
       await book.update(req.body);
-      console.log(req.body);
       res.redirect('/books/');
     } else {
       const err = new Error();

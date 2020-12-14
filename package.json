@@ -4,7 +4,7 @@
   "description": "Treehouse Project 8 - SQL Library Manager",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node app.js",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=sql-library-manager:* npm run devstart"
   },
